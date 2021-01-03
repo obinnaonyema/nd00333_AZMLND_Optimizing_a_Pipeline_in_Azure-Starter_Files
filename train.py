@@ -14,13 +14,12 @@ from azureml.data.dataset_factory import TabularDatasetFactory
 # Data is located at:
 # "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
 
-ds = ### YOUR CODE HERE ###
+### YOUR CODE HERE ###
+web_path = [
+       'https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv'
+   ]
 
-x, y = clean_data(ds)
-
-# TODO: Split data into train and test sets.
-
-### YOUR CODE HERE ###a
+ds = TabularDatasetFactory.from_delimited_files(path=web_path, separator=',')   
 
 run = Run.get_context()
 
@@ -49,7 +48,8 @@ def clean_data(data):
     x_df["poutcome"] = x_df.poutcome.apply(lambda s: 1 if s == "success" else 0)
 
     y_df = x_df.pop("y").apply(lambda s: 1 if s == "yes" else 0)
-    
+    #the idea is to avoid a given error called NoneType object
+    return x_df, y_df
 
 def main():
     # Add arguments to script
@@ -62,10 +62,13 @@ def main():
 
     run.log("Regularization Strength:", np.float(args.C))
     run.log("Max iterations:", np.int(args.max_iter))
+    
+    x, y = clean_data(ds)
+    xds_train, xds_test, yds_train, yds_test = train_test_split(x, y, test_size = 0.3, random_state = 0)
 
-    model = LogisticRegression(C=args.C, max_iter=args.max_iter).fit(x_train, y_train)
+    model = LogisticRegression(C=args.C, max_iter=args.max_iter).fit(xds_train, yds_train)
 
-    accuracy = model.score(x_test, y_test)
+    accuracy = model.score(xds_test, yds_test)
     run.log("Accuracy", np.float(accuracy))
 
 if __name__ == '__main__':
