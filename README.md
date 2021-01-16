@@ -8,7 +8,7 @@ In this project, we build and optimize an Azure ML pipeline using the Python SDK
 
 ## Summary
 
-The data set contains data about customers with which we seek to predict their interests. It contains customer data from a bank's marketing campaigns. ![View data source from Kaggle here](https://www.kaggle.com/yufengsui/portuguese-bank-marketing-data-set?select=bank-full.csv). There are 21 columns and over 32000 rows containing data on employment, marital status, education, housing among others. Some of the columns will need to be one-hot encoded to have numeric values for them.
+The data set contains data about customers with which we seek to predict their interests. It contains customer data from a bank's marketing campaigns. [View data source from Kaggle here](https://www.kaggle.com/yufengsui/portuguese-bank-marketing-data-set?select=bank-full.csv). There are 21 columns and over 32000 rows containing data on employment, marital status, education, housing among others. Some of the columns will need to be one-hot encoded to have numeric values for them.
 
 The best algorithm was the voting ensemble algorithm with 0.9181 accuracy derived via AutoML run.
 
