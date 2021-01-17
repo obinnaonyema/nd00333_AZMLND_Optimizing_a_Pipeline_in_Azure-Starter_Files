@@ -14,13 +14,16 @@ The best algorithm was the voting ensemble algorithm with 0.9181 accuracy derive
 
 ## Scikit-learn Pipeline
 
-a. Architecture: VM General Purpose CPU Cluster Compute D-Series V2
+a. Computer: VM General Purpose CPU Cluster Compute D-Series V2
 
-b. Data: CSV data source. Data is loaded and cleaned using the train.py script
+b. Data: The CSV data source contains 21 columns and 32950 rows. Data was loaded using the TabularDataset class and cleaned using the clean_data() function in the train.py script. 
 
-c. Classification done via Scikit-learn Logistic Regression Model 
+c. Algorithm: Classification was done via Scikit-learn Logistic Regression Model 
 
-d. Hyperparameters: “C” is the regularization parameter, “max-iter” is the maximum number of iterations allowed
+d. Hyperparameters: Hyperdrive was used to automatically select hyperparameters. For the HyperDrive setup, “C” is the regularization parameter, “max-iter” is the maximum number of iterations allowed
+
+![Hyperdrive_Run](https://github.com/obinnaonyema/nd00333_AZMLND_Optimizing_a_Pipeline_in_Azure-Starter_Files/blob/master/hyperdrive_run.PNG)
+
 
 **What are the benefits of the parameter sampler you chose?**
 
