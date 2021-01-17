@@ -14,22 +14,22 @@ The best algorithm was the voting ensemble algorithm with 0.9181 accuracy derive
 
 ## Scikit-learn Pipeline
 
-a. Computer: VM General Purpose CPU Cluster Compute D-Series V2
+a. Compute: VM General Purpose CPU Cluster Compute D-Series V2
 
 b. Data: The CSV data source contains 21 columns and 32950 rows. Data was loaded using the TabularDataset class and cleaned using the clean_data() function in the train.py script. 
 
 c. Algorithm: Classification was done via Scikit-learn Logistic Regression Model 
 
-d. Hyperparameters: Hyperdrive was used to automatically select hyperparameters. For the HyperDrive setup, “C” is the regularization parameter, “max-iter” is the maximum number of iterations allowed
+d. Hyperparameters: Hyperdrive was used to automatically select the best hyperparameters. For the HyperDrive setup, “C” is the regularization parameter, “max-iter” is the maximum number of iterations allowed
 
 ![Hyperdrive_Run](https://github.com/obinnaonyema/nd00333_AZMLND_Optimizing_a_Pipeline_in_Azure-Starter_Files/blob/master/hyperdrive_run.PNG)
 
 
-**What are the benefits of the parameter sampler you chose?**
+**Sampling method**
 
 Random Sampling allowed us optimize resource usage. It yields reasonably accurate results as other sampling methods such as Bayesian sampling, which would require higher computing power, longer run time and effectively a higher budget.
 
-**What are the benefits of the early stopping policy you chose?**
+**Early stopping policy**
 
 BanditPolicy prevented unnecessary runs where there was no improvement in results after a few consecutive runs as defined. It allows for cost savings, even more than Median stopping policy, which compares performance against the median performance of previous runs.
 
@@ -147,7 +147,7 @@ While some algorithms such as XGBoost were used multiple times in the ensemble, 
 
 ## Pipeline comparison
 
-AutoML yielded a result of 0.918 compared to the HyperDrive result of 0.915. The difference in accuracy isn't very significant however.
+AutoML yielded a result of 0.917 compared to the HyperDrive result of 0.915. The difference in accuracy isn't very significant however.
 
 ## Future work
 It will be a point of learning to try other models and adjust hyperparameters to compare results. For example we could allow a more lax slack factor with the Bandit Policy to assess the effect on the final result. Although I suspect this will create a marginal improvement in final accuracy.
